@@ -8,7 +8,7 @@ class MuseumUseCase {
 
   final MuseumRepository _repository;
 
-  Future<List<MuseumItem>> execute() {
-    return _repository.getItems(1);
+  Future<List<MuseumItem>> execute({int pageNumber = 1}) {
+    return _repository.getItems(pageNumber);
   }
 }

@@ -15,7 +15,10 @@ class MuseumApiServiceImpl with BaseExecutor implements MuseumApiService {
     final requestUrl = Uri.https(
       _baseUrl,
       '/api/$_locale/collection',
-      {'key': 'dummyKey'},
+      {
+        'key': 'dummyKey',
+        'p': '$page',
+      },
     );
 
     final client = Dio();

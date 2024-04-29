@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_scroll_app/domain/models/museum_item.dart';
 import 'package:flutter_scroll_app/presentation/bloc/overview/overview_cubit.dart';
+import 'package:flutter_scroll_app/presentation/bloc/overview/overview_status.dart';
+import 'package:flutter_scroll_app/presentation/widget/error_widget.dart';
+import 'package:flutter_scroll_app/presentation/widget/list_item.dart';
 
 class OverviewPage extends StatefulWidget {
   const OverviewPage({super.key});
@@ -12,16 +16,21 @@ class OverviewPage extends StatefulWidget {
 class _OverviewPageState extends State<OverviewPage>
     with TickerProviderStateMixin {
   late AnimationController controller;
+  final _scrollController = ScrollController();
 
   @override
   void initState() {
+    context.read<OverviewCubit>().loadItems();
     controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 5),
-    )..addListener(() {
-        setState(() {});
-      });
+    )..addListener(
+        () {
+          setState(() {});
+        },
+      );
     controller.repeat(reverse: true);
+    _scrollController.addListener(_scrollListener);
     super.initState();
   }
 
@@ -31,63 +40,74 @@ class _OverviewPageState extends State<OverviewPage>
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        BlocBuilder<OverviewCubit, OverviewState>(
-          builder: (context, state) {
-            if (state is OverviewLoadingState) {
-              return _LoadingIndicatorOverlay(controller: controller);
-            }
-
-            if (state is OverviewLoadedState) {
-              return const _OverviewPageContent();
-            }
-
-            return _ErrorPageContent(
-                errorMessage: (state as OverviewErrorState).errorMessage);
-          },
-        ),
-      ],
-    );
+  void _scrollListener() {
+    if (_scrollController.position.pixels ==
+        _scrollController.position.maxScrollExtent) {
+      context.read<OverviewCubit>().loadItems();
+    }
   }
-}
-
-class _LoadingIndicatorOverlay extends StatelessWidget {
-  const _LoadingIndicatorOverlay({required this.controller});
-
-  final AnimationController controller;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: CircularProgressIndicator(
-        value: controller.value,
-        semanticsLabel: 'Loading indicator',
-      ),
-    );
-  }
-}
-
-class _ErrorPageContent extends StatelessWidget {
-  const _ErrorPageContent({required this.errorMessage});
-
-  final String errorMessage;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(errorMessage),
+    return BlocBuilder<OverviewCubit, OverviewState>(
+      builder: (context, state) {
+        switch (state.status) {
+          case OverviewStatus.initial:
+          case OverviewStatus.loaded:
+            return _OverviewPageContent(
+              items: state.museumItems,
+              scrollController: _scrollController,
+            );
+          case OverviewStatus.error:
+            return const ErrorPageContent();
+        }
+      },
     );
   }
 }
 
 class _OverviewPageContent extends StatelessWidget {
-  const _OverviewPageContent();
+  const _OverviewPageContent({
+    required this.items,
+    required this.scrollController,
+  });
+
+  final List<MuseumItem> items;
+  final ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Builder(
+      builder: (context) {
+        if (items.isEmpty) {
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircularProgressIndicator(),
+            ],
+          );
+        }
+
+        return ListView.builder(
+          controller: scrollController,
+          itemBuilder: (context, index) {
+            if (index == items.length) {
+              return const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircularProgressIndicator(),
+                ],
+              );
+            }
+
+            return ListItem(
+              title: items[index].title,
+              imageUrl: items[index].imageUrl,
+            );
+          },
+          itemCount: items.length + 1,
+        );
+      },
+    );
   }
 }

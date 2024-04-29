@@ -1,11 +1,9 @@
-import 'dart:ui';
-
 class MuseumItem {
   MuseumItem({
     required this.title,
-    required this.image,
+    required this.imageUrl,
   });
-  
+
   final String title;
-  final Image image;
+  final String imageUrl;
 }

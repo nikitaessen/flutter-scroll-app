@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class AppRoot extends StatelessWidget {
   const AppRoot({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -16,8 +15,13 @@ class AppRoot extends StatelessWidget {
           create: (_) => serviceLocator(),
         ),
       ],
-      child: const MaterialApp(
-        home: OverviewPage(),
+      child: MaterialApp(
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Text('Sample page title'),
+          ),
+          body: const OverviewPage(),
+        ),
       ),
     );
   }

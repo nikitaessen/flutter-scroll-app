@@ -36,10 +36,9 @@ abstract class RepositoryBase {
         return mapper(body);
       } else {
         throw RepositoryExceptionBase(
-          response: response,
-          message: 'Status code: ${response.statusCode}'
-          '\nBody: ${response.data.toString()}'
-        );
+            response: response,
+            message: 'Status code: ${response.statusCode}'
+                '\nBody: ${response.data.toString()}');
       }
     } catch (ex) {
       // TODO(Nikita): log error
