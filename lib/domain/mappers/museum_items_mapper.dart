@@ -10,6 +10,7 @@ class MuseumItemsMapper {
           (e) => MuseumItem(
             title: e.title,
             imageUrl: e.webImage.url,
+            headerImageUrl: e.headerImage.url,
           ),
         )
         .toList();

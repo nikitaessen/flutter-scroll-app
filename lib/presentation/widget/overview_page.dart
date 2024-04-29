@@ -80,34 +80,49 @@ class _OverviewPageContent extends StatelessWidget {
     return Builder(
       builder: (context) {
         if (items.isEmpty) {
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircularProgressIndicator(),
-            ],
-          );
+          const _ProgressIndicatorItem();
         }
 
         return ListView.builder(
           controller: scrollController,
           itemBuilder: (context, index) {
             if (index == items.length) {
-              return const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircularProgressIndicator(),
-                ],
-              );
+              return const _ProgressIndicatorItem();
             }
-
-            return ListItem(
-              title: items[index].title,
-              imageUrl: items[index].imageUrl,
+        
+            final item = items[index];
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListItem(
+                title: item.title,
+                imageUrl: item.imageUrl,
+                headerImageUrl: item.headerImageUrl,
+              ),
             );
           },
           itemCount: items.length + 1,
         );
       },
+    );
+  }
+}
+
+class _ProgressIndicatorItem extends StatelessWidget {
+  const _ProgressIndicatorItem();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        SizedBox(height: 12),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircularProgressIndicator(),
+          ],
+        ),
+        SizedBox(height: 16),
+      ],
     );
   }
 }
