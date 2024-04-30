@@ -8,6 +8,7 @@ part of 'art_object.dart';
 
 ArtObject _$ArtObjectFromJson(Map<String, dynamic> json) => ArtObject(
       json['id'] as String,
+      json['objectNumber'] as String,
       json['title'] as String,
       json['hasImage'] as bool,
       json['longTitle'] as String,
@@ -17,6 +18,7 @@ ArtObject _$ArtObjectFromJson(Map<String, dynamic> json) => ArtObject(
 
 Map<String, dynamic> _$ArtObjectToJson(ArtObject instance) => <String, dynamic>{
       'id': instance.id,
+      'objectNumber': instance.objectNumber,
       'title': instance.title,
       'hasImage': instance.hasImage,
       'longTitle': instance.longTitle,

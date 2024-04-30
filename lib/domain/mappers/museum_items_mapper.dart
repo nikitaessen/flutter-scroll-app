@@ -1,13 +1,15 @@
-import 'package:flutter_scroll_app/data/models/museum_api_model.dart';
-import 'package:flutter_scroll_app/domain/models/museum_item.dart';
+import 'package:flutter_scroll_app/data/models/collection_api_model.dart';
+import 'package:flutter_scroll_app/domain/models/museum_object.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
 class MuseumItemsMapper {
-  List<MuseumItem> map(MuseumApiModel dataModel) {
+  List<MuseumObject> map(CollectionApiModel dataModel) {
     return dataModel.artObjects
         .map(
-          (e) => MuseumItem(
+          (e) => MuseumObject(
+            id: e.id,
+            objectNumber: e.objectNumber,
             title: e.title,
             imageUrl: e.webImage.url,
             headerImageUrl: e.headerImage.url,

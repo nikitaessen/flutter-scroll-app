@@ -10,14 +10,39 @@ const _locale = 'en';
 class MuseumApiServiceImpl with BaseExecutor implements MuseumApiService {
   MuseumApiServiceImpl();
 
+  String get apiKey => const String.fromEnvironment('MUSEUM_KEY');
+
   @override
-  Future<Response<Object>> getData(int page) async {
+  Future<Response<Object>> fetchCollectionData(int page) async {
     final requestUrl = Uri.https(
       _baseUrl,
       '/api/$_locale/collection',
       {
-        'key': 'dummyKey',
+        'key': apiKey,
         'p': '$page',
+      },
+    );
+
+    final client = Dio();
+    final response = client.get<Object>(
+      requestUrl.toString(),
+      options: Options(
+        validateStatus: (_) => true,
+        contentType: Headers.jsonContentType,
+        responseType: ResponseType.json,
+      ),
+    );
+
+    return response;
+  }
+
+  @override
+  Future<Response<Object>> fetchItemDetails(String objectNumber) async {
+    final requestUrl = Uri.https(
+      _baseUrl,
+      '/api/$_locale/collection/$objectNumber',
+      {
+        'key': apiKey,
       },
     );
 

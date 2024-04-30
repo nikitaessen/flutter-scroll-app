@@ -7,6 +7,7 @@ part 'art_object.g.dart';
 class ArtObject {
   ArtObject(
     this.id,
+    this.objectNumber,
     this.title,
     this.hasImage,
     this.longTitle,
@@ -15,6 +16,7 @@ class ArtObject {
   );
 
   String id;
+  String objectNumber;
   String title;
   bool hasImage;
   String longTitle;

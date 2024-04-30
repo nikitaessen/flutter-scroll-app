@@ -1,9 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_scroll_app/presentation/app_constants.dart';
+import 'package:flutter_scroll_app/shared/scroll_app_router.dart';
 
 class ListItem extends StatelessWidget {
   const ListItem({
     super.key,
+    required this.objectNumber,
     required this.title,
     required this.imageUrl,
     required this.headerImageUrl,
@@ -11,6 +14,8 @@ class ListItem extends StatelessWidget {
     this.borderColor = Colors.black,
     this.borderRadius = 8,
   });
+
+  final String objectNumber;
 
   final String title;
 
@@ -31,6 +36,7 @@ class ListItem extends StatelessWidget {
         maxWidth: AppConstants.webContentMaxWidth,
       ),
       child: InkWell(
+        onTap: () => context.router.navigate(DetailsRoute(objectNumber: objectNumber)),
         child: DecoratedBox(
           decoration: BoxDecoration(
             color: backgroundColor,

@@ -5,7 +5,7 @@ final class OverviewState extends Equatable {
     this.status = OverviewStatus.initial,
     this.hasReachedLimit = false,
     this.pageNumber = 1,
-    this.museumItems = const <MuseumItem>[],
+    this.museumItems = const <MuseumObject>[],
   });
 
   final OverviewStatus status;
@@ -14,7 +14,7 @@ final class OverviewState extends Equatable {
 
   final int pageNumber;
 
-  final List<MuseumItem> museumItems;
+  final List<MuseumObject> museumItems;
 
   @override
   List<Object?> get props => [
@@ -24,14 +24,9 @@ final class OverviewState extends Equatable {
         museumItems.hashCode,
       ];
 
-  @override
-  String toString() {
-    return '''PostState { status: $status, hasReachedMax: $hasReachedLimit, pageNumber: $pageNumber, posts: ${museumItems.length} }''';
-  }
-
   OverviewState copyWith({
     OverviewStatus? status,
-    List<MuseumItem>? museumItems,
+    List<MuseumObject>? museumItems,
     bool? hasReachedLimit,
     int? pageNumber,
   }) {

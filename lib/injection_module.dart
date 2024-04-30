@@ -1,4 +1,3 @@
-import 'package:flutter_scroll_app/domain/mappers/museum_items_mapper.dart';
 import 'package:flutter_scroll_app/injection_module.config.dart';
 import 'package:flutter_scroll_app/presentation/bloc/overview/overview_cubit.dart';
 import 'package:get_it/get_it.dart';
