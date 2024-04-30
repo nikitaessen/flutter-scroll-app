@@ -1,4 +1,5 @@
 import 'package:flutter_scroll_app/injection_module.config.dart';
+import 'package:flutter_scroll_app/presentation/bloc/details/details_cubit.dart';
 import 'package:flutter_scroll_app/presentation/bloc/overview/overview_cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
@@ -16,9 +17,11 @@ void registerDependencies() {
 }
 
 void _registerCubits() {
-  serviceLocator.registerFactory<OverviewCubit>(
-    () => OverviewCubit(
-      museumUseCase: serviceLocator(),
-    ),
-  );
+  serviceLocator
+    ..registerFactory<OverviewCubit>(
+      () => OverviewCubit(museumUseCase: serviceLocator()),
+    )
+    ..registerFactory(
+      () => DetailsCubit(museumUseCase: serviceLocator()),
+    );
 }

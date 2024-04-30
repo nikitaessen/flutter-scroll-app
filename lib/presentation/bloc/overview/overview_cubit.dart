@@ -2,21 +2,22 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_scroll_app/data/exceptions/repository_exception.dart';
 import 'package:flutter_scroll_app/domain/models/museum_object.dart';
-import 'package:flutter_scroll_app/domain/use_case/museum_use_case.dart';
+import 'package:flutter_scroll_app/domain/use_case/museum_collection_use_case.dart';
 import 'package:flutter_scroll_app/presentation/bloc/overview/overview_status.dart';
 
 part 'overview_state.dart';
 
 class OverviewCubit extends Cubit<OverviewState> {
-  OverviewCubit({required this.museumUseCase})
-      : super(const OverviewState(status: OverviewStatus.initial));
+  OverviewCubit({required MuseumCollectionUseCase museumUseCase})
+      : _museumUseCase = museumUseCase,
+        super(const OverviewState(status: OverviewStatus.initial));
 
-  final MuseumUseCase museumUseCase;
+  final MuseumCollectionUseCase _museumUseCase;
 
-  Future<void> loadItems() async {
+  Future<void> getCollectionObjects() async {
     try {
       if (state.status == OverviewStatus.initial) {
-        final fetchedItems = await museumUseCase.execute();
+        final fetchedItems = await _museumUseCase.execute();
         return emit(
           OverviewState(
             status: OverviewStatus.loaded,
@@ -26,7 +27,7 @@ class OverviewCubit extends Cubit<OverviewState> {
       }
 
       final nextPage = state.pageNumber + 1;
-      final fetchedItems = await museumUseCase.execute(
+      final fetchedItems = await _museumUseCase.execute(
         pageNumber: nextPage,
       );
       emit(
@@ -39,6 +40,7 @@ class OverviewCubit extends Cubit<OverviewState> {
     } on RepositoryException {
       emit(const OverviewState(status: OverviewStatus.error));
     } catch (ex) {
+      emit(const OverviewState(status: OverviewStatus.error));
       // TODO(Nikita): log error
     }
   }

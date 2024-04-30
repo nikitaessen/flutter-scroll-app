@@ -1,13 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_scroll_app/data/api/museum_api_service.dart';
-import 'package:flutter_scroll_app/shared/base_executor.dart';
 import 'package:injectable/injectable.dart';
 
 const _baseUrl = 'rijksmuseum.nl';
 const _locale = 'en';
 
 @Injectable(as: MuseumApiService)
-class MuseumApiServiceImpl with BaseExecutor implements MuseumApiService {
+class MuseumApiServiceImpl implements MuseumApiService {
   MuseumApiServiceImpl();
 
   String get apiKey => const String.fromEnvironment('MUSEUM_KEY');
@@ -20,6 +19,7 @@ class MuseumApiServiceImpl with BaseExecutor implements MuseumApiService {
       {
         'key': apiKey,
         'p': '$page',
+        'culture': 'en',
       },
     );
 
@@ -43,6 +43,7 @@ class MuseumApiServiceImpl with BaseExecutor implements MuseumApiService {
       '/api/$_locale/collection/$objectNumber',
       {
         'key': apiKey,
+        'culture': 'en',
       },
     );
 

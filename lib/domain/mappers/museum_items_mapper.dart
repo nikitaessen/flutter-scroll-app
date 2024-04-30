@@ -12,7 +12,7 @@ class MuseumItemsMapper {
             objectNumber: e.objectNumber,
             title: e.title,
             imageUrl: e.webImage.url,
-            headerImageUrl: e.headerImage.url,
+            headerImageUrl: e.headerImage?.url ?? '',
           ),
         )
         .toList();

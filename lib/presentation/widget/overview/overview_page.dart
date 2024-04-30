@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_scroll_app/domain/models/museum_object.dart';
 import 'package:flutter_scroll_app/presentation/bloc/overview/overview_cubit.dart';
 import 'package:flutter_scroll_app/presentation/bloc/overview/overview_status.dart';
-import 'package:flutter_scroll_app/presentation/widget/overview/error_widget.dart';
+import 'package:flutter_scroll_app/presentation/widget/common/error_widget.dart';
 import 'package:flutter_scroll_app/presentation/widget/overview/list_item.dart';
 
 @RoutePage()
@@ -17,35 +17,19 @@ class OverviewPage extends StatefulWidget {
 
 class _OverviewPageState extends State<OverviewPage>
     with TickerProviderStateMixin {
-  late AnimationController controller;
   final _scrollController = ScrollController();
 
   @override
   void initState() {
-    context.read<OverviewCubit>().loadItems();
-    controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 5),
-    )..addListener(
-        () {
-          setState(() {});
-        },
-      );
-    controller.repeat(reverse: true);
+    context.read<OverviewCubit>().getCollectionObjects();
     _scrollController.addListener(_scrollListener);
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
   }
 
   void _scrollListener() {
     if (_scrollController.position.pixels ==
         _scrollController.position.maxScrollExtent) {
-      context.read<OverviewCubit>().loadItems();
+      context.read<OverviewCubit>().getCollectionObjects();
     }
   }
 

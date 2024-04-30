@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_scroll_app/presentation/app_constants.dart';
 import 'package:flutter_scroll_app/presentation/bloc/details/details_cubit.dart';
+import 'package:flutter_scroll_app/presentation/bloc/details/details_status.dart';
+import 'package:flutter_scroll_app/presentation/widget/common/error_widget.dart';
 
 @RoutePage()
 class DetailsPage extends StatefulWidget {
@@ -16,34 +18,57 @@ class DetailsPage extends StatefulWidget {
 
 class _DetailsPageState extends State<DetailsPage> {
   @override
+  void initState() {
+    context.read<DetailsCubit>().getObjectDetails(widget.objectNumber);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<DetailsCubit, DetailsState>(
         builder: (context, state) {
-          return ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxWidth: AppConstants.webContentMaxWidth,
-            ),
-            child: Column(
-              children: [
-                Expanded(
-                  child: Image.network(
-                    state.imageUrl,
-                    fit: BoxFit.cover,
-                  ),
+          switch (state.status) {
+            case DetailsStatus.initial:
+            case DetailsStatus.loading:
+              return const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(child: CircularProgressIndicator()),
+                ],
+              );
+            case DetailsStatus.loaded:
+              return ConstrainedBox(
+                constraints: const BoxConstraints(
+                  maxWidth: AppConstants.webContentMaxWidth,
                 ),
-                Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(40.0),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(state.title),
-                      const SizedBox(height: 40),
-                      Text(state.description),
+                      Expanded(
+                        child: Image.network(
+                          state.imageUrl,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text(state.title),
+                            const SizedBox(height: 40),
+                            Text(state.description),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
-              ],
-            ),
-          );
+              );
+            case DetailsStatus.error:
+              return const ErrorPageContent();
+          }
         },
       ),
     );

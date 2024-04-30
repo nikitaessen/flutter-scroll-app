@@ -3,8 +3,8 @@ import 'package:flutter_scroll_app/domain/repositories/museum_repository.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class MuseumUseCase {
-  MuseumUseCase(this._repository);
+class MuseumCollectionUseCase {
+  MuseumCollectionUseCase(this._repository);
 
   final MuseumRepository _repository;
 

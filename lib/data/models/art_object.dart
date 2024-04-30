@@ -9,7 +9,7 @@ class ArtObject {
     this.id,
     this.objectNumber,
     this.title,
-    this.hasImage,
+    this.description,
     this.longTitle,
     this.webImage,
     this.headerImage,
@@ -18,10 +18,10 @@ class ArtObject {
   String id;
   String objectNumber;
   String title;
-  bool hasImage;
-  String longTitle;
+  String? description;
+  String? longTitle;
   ArtImage webImage;
-  ArtImage headerImage;
+  ArtImage? headerImage;
 
   factory ArtObject.fromJson(Map<String, dynamic> json) =>
       _$ArtObjectFromJson(json);

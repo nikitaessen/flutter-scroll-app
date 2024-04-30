@@ -1,11 +1,14 @@
-import 'package:flutter_scroll_app/data/models/collection_api_model.dart';
+import 'package:flutter_scroll_app/data/models/collection_object_details_api_model.dart';
 import 'package:flutter_scroll_app/domain/models/museum_object_details.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
 class MuseumObjectDetailsMapper {
-  MuseumObjectDetails map(CollectionApiModel dataModel) {
-    // TODO(Nikita): do mapping
-    return MuseumObjectDetails(title: '', description: '', imageUrl: '');
+  MuseumObjectDetails map(CollectionObjectDetailsApiModel dataModel) {
+    return MuseumObjectDetails(
+      title: dataModel.artObject.title,
+      description: dataModel.artObject.description ?? '',
+      imageUrl: dataModel.artObject.webImage.url,
+    );
   }
 }

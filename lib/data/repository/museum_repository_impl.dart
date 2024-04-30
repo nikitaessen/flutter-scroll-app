@@ -1,7 +1,9 @@
 import 'package:flutter_scroll_app/data/api/museum_api_service.dart';
 import 'package:flutter_scroll_app/data/models/collection_api_model.dart';
+import 'package:flutter_scroll_app/data/models/collection_object_details_api_model.dart';
 import 'package:flutter_scroll_app/data/repository/repository_base.dart';
 import 'package:flutter_scroll_app/domain/mappers/museum_items_mapper.dart';
+import 'package:flutter_scroll_app/domain/mappers/museum_object_details_mapper.dart';
 import 'package:flutter_scroll_app/domain/models/museum_object.dart';
 import 'package:flutter_scroll_app/domain/models/museum_object_details.dart';
 import 'package:flutter_scroll_app/domain/repositories/museum_repository.dart';
@@ -12,10 +14,12 @@ class MuseumRepositoryImpl extends RepositoryBase implements MuseumRepository {
   MuseumRepositoryImpl({
     required this.museumApiService,
     required this.museumItemsMapper,
+    required this.museumObjectDetailsMapper,
   });
 
   final MuseumApiService museumApiService;
   final MuseumItemsMapper museumItemsMapper;
+  final MuseumObjectDetailsMapper museumObjectDetailsMapper;
 
   @override
   Future<List<MuseumObject>> getObjects(int page) {
@@ -29,7 +33,11 @@ class MuseumRepositoryImpl extends RepositoryBase implements MuseumRepository {
 
   @override
   Future<MuseumObjectDetails> getObjectDetails(String objectNumber) {
-    // TODO: implement getObjectDetails
-    throw UnimplementedError();
+    return executeApiCall<MuseumObjectDetails, Object>(
+      invoker: () => museumApiService.fetchItemDetails(objectNumber),
+      mapper: (body) => museumObjectDetailsMapper.map(
+        CollectionObjectDetailsApiModel.fromJson(body as Map<String, dynamic>),
+      ),
+    );
   }
 }

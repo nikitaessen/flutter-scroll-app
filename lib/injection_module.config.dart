@@ -19,8 +19,10 @@ import 'package:flutter_scroll_app/domain/mappers/museum_object_details_mapper.d
     as _i5;
 import 'package:flutter_scroll_app/domain/repositories/museum_repository.dart'
     as _i8;
-import 'package:flutter_scroll_app/domain/use_case/museum_use_case.dart'
+import 'package:flutter_scroll_app/domain/use_case/museum_collection_use_case.dart'
     as _i10;
+import 'package:flutter_scroll_app/domain/use_case/museum_object_details_use_case.dart'
+    as _i11;
 import 'package:flutter_scroll_app/shared/scroll_app_router.dart' as _i4;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
@@ -44,9 +46,12 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i8.MuseumRepository>(() => _i9.MuseumRepositoryImpl(
           museumApiService: gh<_i6.MuseumApiService>(),
           museumItemsMapper: gh<_i3.MuseumItemsMapper>(),
+          museumObjectDetailsMapper: gh<_i5.MuseumObjectDetailsMapper>(),
         ));
-    gh.factory<_i10.MuseumUseCase>(
-        () => _i10.MuseumUseCase(gh<_i8.MuseumRepository>()));
+    gh.factory<_i10.MuseumCollectionUseCase>(
+        () => _i10.MuseumCollectionUseCase(gh<_i8.MuseumRepository>()));
+    gh.factory<_i11.MuseumObjectDetailsUseCase>(
+        () => _i11.MuseumObjectDetailsUseCase(gh<_i8.MuseumRepository>()));
     return this;
   }
 }
