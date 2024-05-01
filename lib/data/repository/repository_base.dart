@@ -50,7 +50,7 @@ abstract class RepositoryBase {
           mapper: mapper,
           useTimeout: useTimeout,
           timeoutInSeconds: timeoutInSeconds,
-          retryAttemptNumber: retryAttemptNumber,
+          retryAttemptNumber: retryAttemptNumber + 1,
         );
       }
 
