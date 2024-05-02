@@ -38,5 +38,6 @@ If you'd like to contribute to this project, follow these steps:
 
 ## Credits
 
-Official [Flutter](https://docs.flutter.dev/) documentation was used
-Flutter Bloc [docs](https://bloclibrary.dev/)
+[Flutter](https://docs.flutter.dev/) documentation.
+
+Flutter Bloc [docs](https://bloclibrary.dev/).
