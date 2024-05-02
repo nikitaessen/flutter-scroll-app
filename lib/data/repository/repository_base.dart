@@ -44,8 +44,10 @@ abstract class RepositoryBase {
                 '\nBody: ${response.data.toString()}');
       }
     } catch (ex) {
+      // TODO(Nikita): log error
+
       if (retryAttemptNumber <= _maxAttemptsCount) {
-        executeApiCall(
+        await executeApiCall<T, TSource>(
           invoker: invoker,
           mapper: mapper,
           useTimeout: useTimeout,
@@ -54,8 +56,11 @@ abstract class RepositoryBase {
         );
       }
 
-      // TODO(Nikita): log error
-      throw RepositoryException(message: ex.toString());
+      if (ex is RepositoryException) {
+        rethrow;
+      } else {
+        throw RepositoryException(message: ex.toString());
+      }
     }
   }
 
