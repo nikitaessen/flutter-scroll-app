@@ -5,6 +5,7 @@ import 'package:flutter_scroll_app/presentation/bloc/overview/overview_cubit.dar
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_scroll_app/shared/scroll_app_router.dart';
 import 'package:get_it/get_it.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppRoot extends StatelessWidget {
   const AppRoot({super.key});
@@ -21,6 +22,9 @@ class AppRoot extends StatelessWidget {
         ),
       ],
       child: MaterialApp.router(
+        theme: ThemeData(
+          textTheme: GoogleFonts.archivoBlackTextTheme(),
+        ),
         routerConfig: GetIt.instance.get<ScrollAppRouter>().config(),
       ),
     );

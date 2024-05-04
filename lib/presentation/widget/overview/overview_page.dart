@@ -67,22 +67,19 @@ class _OverviewPageContent extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Sample page title'),
       ),
-      body: Builder(
-        builder: (context) {
-          if (items.isEmpty) {
-            const _ProgressIndicatorItem();
-          }
-
-          return ListView.builder(
+      backgroundColor: const Color.fromRGBO(58, 66, 86, 1.0),
+      body: items.isEmpty
+          ? const _ProgressIndicatorItem()
+          : ListView.builder(
             controller: scrollController,
+            padding: const EdgeInsets.symmetric(vertical: 40),
             itemBuilder: (context, index) {
               if (index == items.length) {
                 return const _ProgressIndicatorItem();
               }
-
+          
               final item = items[index];
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
+              return Center(
                 child: ListItem(
                   objectNumber: item.objectNumber,
                   title: item.title,
@@ -92,9 +89,7 @@ class _OverviewPageContent extends StatelessWidget {
               );
             },
             itemCount: items.length + 1,
-          );
-        },
-      ),
+          ),
     );
   }
 }
