@@ -1,4 +1,4 @@
-import 'package:flutter_scroll_app/data/exceptions/repository_exception_base.dart';
+import 'package:flutter_scroll_app/domain/exceptions/repository_exception_base.dart';
 
 class AuthenticationException extends RepositoryExceptionBase {
   AuthenticationException({

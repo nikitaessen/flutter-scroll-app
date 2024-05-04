@@ -1,11 +1,11 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_scroll_app/data/exceptions/authentication_exception.dart';
-import 'package:flutter_scroll_app/data/exceptions/bad_request_exception.dart';
-import 'package:flutter_scroll_app/data/exceptions/internal_server_error_exception.dart';
-import 'package:flutter_scroll_app/data/exceptions/repository_exception.dart';
-import 'package:flutter_scroll_app/data/exceptions/validation_exception.dart';
+import 'package:flutter_scroll_app/domain/exceptions/authentication_exception.dart';
+import 'package:flutter_scroll_app/domain/exceptions/bad_request_exception.dart';
+import 'package:flutter_scroll_app/domain/exceptions/internal_server_error_exception.dart';
+import 'package:flutter_scroll_app/domain/exceptions/repository_exception.dart';
+import 'package:flutter_scroll_app/domain/exceptions/validation_exception.dart';
 import 'package:flutter_scroll_app/data/repository/repository_base.dart';
 import 'package:flutter_test/flutter_test.dart';
 

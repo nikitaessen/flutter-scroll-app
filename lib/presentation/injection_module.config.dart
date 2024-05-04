@@ -13,9 +13,9 @@ import 'package:flutter_scroll_app/data/api/museum_api_service_impl.dart'
     as _i7;
 import 'package:flutter_scroll_app/data/repository/museum_repository_impl.dart'
     as _i9;
-import 'package:flutter_scroll_app/domain/mappers/museum_items_mapper.dart'
+import 'package:flutter_scroll_app/data/mappers/museum_items_mapper.dart'
     as _i3;
-import 'package:flutter_scroll_app/domain/mappers/museum_object_details_mapper.dart'
+import 'package:flutter_scroll_app/data/mappers/museum_object_details_mapper.dart'
     as _i5;
 import 'package:flutter_scroll_app/domain/repositories/museum_repository.dart'
     as _i8;
@@ -23,7 +23,7 @@ import 'package:flutter_scroll_app/domain/use_case/museum_collection_use_case.da
     as _i10;
 import 'package:flutter_scroll_app/domain/use_case/museum_object_details_use_case.dart'
     as _i11;
-import 'package:flutter_scroll_app/shared/scroll_app_router.dart' as _i4;
+import 'package:flutter_scroll_app/presentation/scroll_app_router.dart' as _i4;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 

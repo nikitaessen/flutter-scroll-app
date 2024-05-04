@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_scroll_app/presentation/app_constants.dart';
+import 'package:flutter_scroll_app/presentation/constants/app_constants.dart';
 import 'package:flutter_scroll_app/presentation/bloc/details/details_cubit.dart';
 import 'package:flutter_scroll_app/presentation/bloc/details/details_status.dart';
 import 'package:flutter_scroll_app/presentation/widget/common/error_widget.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter_scroll_app/injection_module.config.dart';
+import 'package:flutter_scroll_app/presentation/injection_module.config.dart';
 import 'package:flutter_scroll_app/presentation/bloc/details/details_cubit.dart';
 import 'package:flutter_scroll_app/presentation/bloc/overview/overview_cubit.dart';
 import 'package:get_it/get_it.dart';

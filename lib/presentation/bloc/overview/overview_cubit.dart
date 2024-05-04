@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_scroll_app/data/exceptions/repository_exception.dart';
+import 'package:flutter_scroll_app/domain/exceptions/repository_exception.dart';
 import 'package:flutter_scroll_app/domain/models/museum_object.dart';
 import 'package:flutter_scroll_app/domain/use_case/museum_collection_use_case.dart';
 import 'package:flutter_scroll_app/presentation/bloc/overview/overview_status.dart';

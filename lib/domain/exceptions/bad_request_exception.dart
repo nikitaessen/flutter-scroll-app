@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_scroll_app/data/exceptions/repository_exception.dart';
+import 'package:flutter_scroll_app/domain/exceptions/repository_exception.dart';
 
 class BadRequestException extends RepositoryException {
   BadRequestException(

@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_scroll_app/presentation/app_constants.dart';
-import 'package:flutter_scroll_app/shared/scroll_app_router.dart';
+import 'package:flutter_scroll_app/presentation/constants/app_constants.dart';
+import 'package:flutter_scroll_app/presentation/scroll_app_router.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class ListItem extends StatelessWidget {

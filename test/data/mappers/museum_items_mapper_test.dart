@@ -1,7 +1,7 @@
 import 'package:flutter_scroll_app/data/models/art_image.dart';
 import 'package:flutter_scroll_app/data/models/art_object.dart';
 import 'package:flutter_scroll_app/data/models/collection_api_model.dart';
-import 'package:flutter_scroll_app/domain/mappers/museum_items_mapper.dart';
+import 'package:flutter_scroll_app/data/mappers/museum_items_mapper.dart';
 import 'package:flutter_scroll_app/domain/models/museum_object.dart';
 import 'package:flutter_test/flutter_test.dart';
 

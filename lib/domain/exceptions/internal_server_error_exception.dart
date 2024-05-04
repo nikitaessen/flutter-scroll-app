@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_scroll_app/data/exceptions/repository_exception.dart';
+import 'package:flutter_scroll_app/domain/exceptions/repository_exception.dart';
 
 class InternalServerErrorException extends RepositoryException {
   InternalServerErrorException(this.response) : super(message: response?.data.toString() ?? 'Internal Server Error');
