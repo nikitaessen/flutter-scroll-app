@@ -33,7 +33,7 @@ Current dataset provided by [Rijksmuseum](https://rijksmuseum.nl)
 2. Navigate to the project directory.
 3. Run `flutter pub get` to install dependencies.
 4. Make sure that you have an API key for data.rijksmuseum.nl
-5. Connect your device/emulator and run `flutter run` and provide your API key using `--dart-define=MUSEUM_KEY=A0ov6hhx`.
+5. Connect your device/emulator and run `flutter run` and provide your API key using `--dart-define=MUSEUM_KEY=$your_key_here`.
 
 ## Contributing
 
