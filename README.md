@@ -15,7 +15,17 @@ Current dataset provided by [Rijksmuseum](https://rijksmuseum.nl)
 
 ## Screenshots
 
-Demo screenshots in progress...
+![Overview page](screenshots/overview.png)
+
+![Details page](screenshots/details.png)
+
+## Planned improvements
+
+1. [ ] Add cloud features (Firebase)
+2. [ ] Enable custom lint
+3. [ ] Impove routing on web, allowing to navigate consistently using the address bar
+4. [ ] Add golden tests
+5. [ ] Create beautiful error screen
 
 ## Installation
 

@@ -65,7 +65,9 @@ class _OverviewPageContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sample page title'),
+        backgroundColor: Colors.blueGrey.shade100,
+        title: const Text('Rijksmuseum'),
+        leading: const Icon(Icons.account_balance_outlined),
       ),
       backgroundColor: const Color.fromRGBO(58, 66, 86, 1.0),
       body: items.isEmpty
