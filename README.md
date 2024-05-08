@@ -24,8 +24,10 @@ Current dataset provided by [Rijksmuseum](https://rijksmuseum.nl)
 1. [ ] Add cloud features (Firebase)
 2. [ ] Enable custom lint
 3. [ ] Impove routing on web, allowing to navigate consistently using the address bar
-4. [ ] Add golden tests
+4. [x] Add golden tests
 5. [ ] Create beautiful error screen
+6. [ ] Create common golden test wrapper
+7. [ ] Add localization support
 
 ## Installation
 
