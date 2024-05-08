@@ -3,6 +3,7 @@ import 'package:flutter_scroll_app/src/data/api/museum_api_service.dart';
 import 'package:injectable/injectable.dart';
 
 const _baseUrl = 'rijksmuseum.nl';
+const _pathParams = '/api/$_locale/collection';
 const _locale = 'en';
 
 @Injectable(as: MuseumApiService)
@@ -15,11 +16,11 @@ class MuseumApiServiceImpl implements MuseumApiService {
   Future<Response<Object>> fetchCollectionData(int page) async {
     final requestUrl = Uri.https(
       _baseUrl,
-      '/api/$_locale/collection',
+      _pathParams,
       {
         'key': apiKey,
         'p': '$page',
-        'culture': 'en',
+        'culture': _locale,
       },
     );
 
@@ -40,10 +41,10 @@ class MuseumApiServiceImpl implements MuseumApiService {
   Future<Response<Object>> fetchItemDetails(String objectNumber) async {
     final requestUrl = Uri.https(
       _baseUrl,
-      '/api/$_locale/collection/$objectNumber',
+      '$_pathParams/$objectNumber',
       {
         'key': apiKey,
-        'culture': 'en',
+        'culture': _locale,
       },
     );
 
