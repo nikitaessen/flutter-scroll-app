@@ -28,6 +28,7 @@ Current dataset provided by [Rijksmuseum](https://rijksmuseum.nl)
 5. [ ] Create beautiful error screen
 6. [ ] Create common golden test wrapper
 7. [ ] Add localization support
+8. [ ] Custom image provider for better loading experience
 
 ## Installation
 
