@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_scroll_app/src/assets/assets.gen.dart';
 import 'package:flutter_scroll_app/src/assets/fonts.gen.dart';
 import 'package:flutter_scroll_app/src/presentation/injection_module.dart';
 import 'package:flutter_scroll_app/src/presentation/bloc/details/details_cubit.dart';
