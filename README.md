@@ -29,6 +29,7 @@ Current dataset provided by [Rijksmuseum](https://rijksmuseum.nl)
 6. [ ] Create common golden test wrapper
 7. [ ] Add localization support
 8. [ ] Custom image provider for better loading experience
+9. [ ] Add logging
 
 ## Installation
 
