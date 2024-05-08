@@ -1,8 +1,8 @@
-import 'package:flutter_scroll_app/data/models/art_image.dart';
-import 'package:flutter_scroll_app/data/models/art_object.dart';
-import 'package:flutter_scroll_app/data/models/collection_object_details_api_model.dart';
-import 'package:flutter_scroll_app/data/mappers/museum_object_details_mapper.dart';
-import 'package:flutter_scroll_app/domain/models/museum_object_details.dart';
+import 'package:flutter_scroll_app/src/data/models/art_image.dart';
+import 'package:flutter_scroll_app/src/data/models/art_object.dart';
+import 'package:flutter_scroll_app/src/data/models/collection_object_details_api_model.dart';
+import 'package:flutter_scroll_app/src/data/mappers/museum_object_details_mapper.dart';
+import 'package:flutter_scroll_app/src/domain/models/museum_object_details.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

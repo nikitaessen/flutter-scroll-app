@@ -1,9 +1,9 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:flutter_scroll_app/domain/exceptions/repository_exception.dart';
-import 'package:flutter_scroll_app/domain/models/museum_object.dart';
-import 'package:flutter_scroll_app/domain/use_case/museum_collection_use_case.dart';
-import 'package:flutter_scroll_app/presentation/bloc/overview/overview_cubit.dart';
-import 'package:flutter_scroll_app/presentation/bloc/overview/overview_status.dart';
+import 'package:flutter_scroll_app/src/domain/exceptions/repository_exception.dart';
+import 'package:flutter_scroll_app/src/domain/models/museum_object.dart';
+import 'package:flutter_scroll_app/src/domain/use_case/museum_collection_use_case.dart';
+import 'package:flutter_scroll_app/src/presentation/bloc/overview/overview_cubit.dart';
+import 'package:flutter_scroll_app/src/presentation/bloc/overview/overview_status.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 

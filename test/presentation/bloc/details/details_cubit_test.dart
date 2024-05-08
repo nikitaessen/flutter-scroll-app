@@ -1,8 +1,8 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:flutter_scroll_app/domain/models/museum_object_details.dart';
-import 'package:flutter_scroll_app/domain/use_case/museum_object_details_use_case.dart';
-import 'package:flutter_scroll_app/presentation/bloc/details/details_cubit.dart';
-import 'package:flutter_scroll_app/presentation/bloc/details/details_status.dart';
+import 'package:flutter_scroll_app/src/domain/models/museum_object_details.dart';
+import 'package:flutter_scroll_app/src/domain/use_case/museum_object_details_use_case.dart';
+import 'package:flutter_scroll_app/src/presentation/bloc/details/details_cubit.dart';
+import 'package:flutter_scroll_app/src/presentation/bloc/details/details_status.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 

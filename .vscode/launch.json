@@ -5,11 +5,11 @@
       "name": "Launch development",
       "request": "launch",
       "type": "dart",
-      "program": "lib/presentation/main.dart",
+      "program": "lib/src/presentation/main.dart",
       "args": [
         "--target",
-        "lib/presentation/main.dart",
+        "lib/src/presentation/main.dart"
       ]
-    },
+    }
   ]
 }
