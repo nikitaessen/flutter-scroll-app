@@ -6,9 +6,9 @@ import 'package:injectable/injectable.dart';
 class MuseumObjectDetailsMapper {
   MuseumObjectDetails map(CollectionObjectDetailsApiModel dataModel) {
     return MuseumObjectDetails(
-      title: dataModel.artObject.title,
-      description: dataModel.artObject.description ?? '',
-      imageUrl: dataModel.artObject.webImage.url,
+      title: dataModel.artObject?.title ?? 'No title',
+      description: dataModel.artObject?.description ?? 'No decription',
+      imageUrl: dataModel.artObject?.webImage?.url ?? '',
     );
   }
 }

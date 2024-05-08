@@ -7,8 +7,8 @@ part of 'art_image.dart';
 // **************************************************************************
 
 ArtImage _$ArtImageFromJson(Map<String, dynamic> json) => ArtImage(
-      json['guid'] as String,
-      json['url'] as String,
+      json['guid'] as String?,
+      json['url'] as String?,
     );
 
 Map<String, dynamic> _$ArtImageToJson(ArtImage instance) => <String, dynamic>{

@@ -13,8 +13,8 @@ class MuseumItemsMapper {
             (e) => MuseumObject(
               id: e.id,
               objectNumber: e.objectNumber,
-              title: e.title,
-              imageUrl: e.webImage.url,
+              title: e.title ?? 'No title',
+              imageUrl: e.webImage?.url ?? '',
               headerImageUrl: e.headerImage?.url ?? '',
             ),
           )

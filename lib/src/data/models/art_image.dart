@@ -6,8 +6,8 @@ part 'art_image.g.dart';
 class ArtImage {
   ArtImage(this.guid, this.url);
 
-  String guid;
-  String url;
+  String? guid;
+  String? url;
 
   factory ArtImage.fromJson(Map<String, dynamic> json) =>
       _$ArtImageFromJson(json);

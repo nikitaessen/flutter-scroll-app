@@ -17,10 +17,10 @@ class ArtObject {
 
   String id;
   String objectNumber;
-  String title;
+  String? title;
   String? description;
   String? longTitle;
-  ArtImage webImage;
+  ArtImage? webImage;
   ArtImage? headerImage;
 
   factory ArtObject.fromJson(Map<String, dynamic> json) =>

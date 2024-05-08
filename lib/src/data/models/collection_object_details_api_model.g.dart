@@ -9,7 +9,9 @@ part of 'collection_object_details_api_model.dart';
 CollectionObjectDetailsApiModel _$CollectionObjectDetailsApiModelFromJson(
         Map<String, dynamic> json) =>
     CollectionObjectDetailsApiModel(
-      ArtObject.fromJson(json['artObject'] as Map<String, dynamic>),
+      json['artObject'] == null
+          ? null
+          : ArtObject.fromJson(json['artObject'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CollectionObjectDetailsApiModelToJson(

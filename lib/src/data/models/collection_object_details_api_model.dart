@@ -7,7 +7,7 @@ part 'collection_object_details_api_model.g.dart';
 class CollectionObjectDetailsApiModel {
   CollectionObjectDetailsApiModel(this.artObject);
 
-  ArtObject artObject;
+  ArtObject? artObject;
 
   factory CollectionObjectDetailsApiModel.fromJson(Map<String, dynamic> json) =>
       _$CollectionObjectDetailsApiModelFromJson(json);
