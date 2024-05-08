@@ -8,7 +8,7 @@ class MuseumObjectDetailsMapper {
     return MuseumObjectDetails(
       title: dataModel.artObject?.title ?? 'No title',
       description: dataModel.artObject?.description ?? 'No decription',
-      imageUrl: dataModel.artObject?.webImage?.url ?? '',
+      imageUrl: dataModel.artObject?.webImage?.url ?? 'https://placehold.co/600x400.png?text=No-Image',
     );
   }
 }

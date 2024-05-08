@@ -14,8 +14,8 @@ class MuseumItemsMapper {
               id: e.id,
               objectNumber: e.objectNumber,
               title: e.title ?? 'No title',
-              imageUrl: e.webImage?.url ?? '',
-              headerImageUrl: e.headerImage?.url ?? '',
+              imageUrl: e.webImage?.url ?? 'https://placehold.co/600x400.png?text=No-Image',
+              headerImageUrl: e.headerImage?.url ?? 'https://placehold.co/600x400.png?text=No-Image',
             ),
           )
           .toList(),
