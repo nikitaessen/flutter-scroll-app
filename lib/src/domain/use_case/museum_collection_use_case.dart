@@ -1,4 +1,4 @@
-import 'package:flutter_scroll_app/src/domain/models/museum_object.dart';
+import 'package:flutter_scroll_app/src/domain/models/museum_collection.dart';
 import 'package:flutter_scroll_app/src/domain/repositories/museum_repository.dart';
 import 'package:injectable/injectable.dart';
 
@@ -8,7 +8,7 @@ class MuseumCollectionUseCase {
 
   final MuseumRepository _repository;
 
-  Future<List<MuseumObject>> execute({int pageNumber = 1}) {
+  Future<MuseumCollection> execute({int pageNumber = 1}) {
     return _repository.getObjects(pageNumber);
   }
 }

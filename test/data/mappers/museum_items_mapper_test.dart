@@ -41,13 +41,15 @@ void main() {
       'WHEN map is called'
       'THEN returns expected model fields',
       () {
-        final actual = mapper.map(dataModel).first;
+        final collection = mapper.map(dataModel);
+        final collectionItem = mapper.map(dataModel).items.first;
 
-        expect(actual.id, expectedModel.id);
-        expect(actual.objectNumber, expectedModel.objectNumber);
-        expect(actual.title, expectedModel.title);
-        expect(actual.imageUrl, expectedModel.imageUrl);
-        expect(actual.headerImageUrl, expectedModel.headerImageUrl);
+        expect(collection.count, dataModel.count);
+        expect(collectionItem.id, expectedModel.id);
+        expect(collectionItem.objectNumber, expectedModel.objectNumber);
+        expect(collectionItem.title, expectedModel.title);
+        expect(collectionItem.imageUrl, expectedModel.imageUrl);
+        expect(collectionItem.headerImageUrl, expectedModel.headerImageUrl);
       },
     );
   });

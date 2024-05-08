@@ -1,5 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_scroll_app/src/domain/exceptions/repository_exception.dart';
+import 'package:flutter_scroll_app/src/domain/models/museum_collection.dart';
 import 'package:flutter_scroll_app/src/domain/models/museum_object.dart';
 import 'package:flutter_scroll_app/src/domain/use_case/museum_collection_use_case.dart';
 import 'package:flutter_scroll_app/src/presentation/bloc/overview/overview_cubit.dart';
@@ -13,6 +14,7 @@ class MockMuseumCollectionUseCase extends Mock
 void main() {
   group(OverviewCubit, () {
     late List<MuseumObject> museumObjects;
+    late MuseumCollection museumCollection;
 
     late MuseumCollectionUseCase museumCollectionUseCase;
     late OverviewCubit overviewCubit;
@@ -21,9 +23,10 @@ void main() {
       museumCollectionUseCase = MockMuseumCollectionUseCase();
       overviewCubit = OverviewCubit(museumUseCase: museumCollectionUseCase);
       museumObjects = List<MuseumObject>.empty();
+      museumCollection = MuseumCollection(count: 100, items: museumObjects);
 
       when(() => museumCollectionUseCase.execute())
-          .thenAnswer((_) async => museumObjects);
+          .thenAnswer((_) async => museumCollection);
     });
 
     test(
@@ -45,6 +48,26 @@ void main() {
         OverviewState(
           status: OverviewStatus.loaded,
           museumItems: museumObjects,
+        ),
+      ],
+    );
+
+    blocTest(
+      'GIVEN OverviewCubit'
+      'WHEN getCollectionObjects() is called and limit reached'
+      'THEN status loaded with hasReachedLimit = true',
+      build: () => overviewCubit,
+      act: (cubit) {
+        when(() => museumCollectionUseCase.execute()).thenAnswer((_) async =>
+            MuseumCollection(
+                count: museumObjects.length, items: museumObjects));
+        cubit.getCollectionObjects();
+      },
+      expect: () => [
+        OverviewState(
+          status: OverviewStatus.loaded,
+          museumItems: museumObjects,
+          hasReachedLimit: true,
         ),
       ],
     );

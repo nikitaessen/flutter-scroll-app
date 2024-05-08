@@ -4,6 +4,7 @@ import 'package:flutter_scroll_app/src/data/models/collection_object_details_api
 import 'package:flutter_scroll_app/src/data/repository/repository_base.dart';
 import 'package:flutter_scroll_app/src/data/mappers/museum_items_mapper.dart';
 import 'package:flutter_scroll_app/src/data/mappers/museum_object_details_mapper.dart';
+import 'package:flutter_scroll_app/src/domain/models/museum_collection.dart';
 import 'package:flutter_scroll_app/src/domain/models/museum_object.dart';
 import 'package:flutter_scroll_app/src/domain/models/museum_object_details.dart';
 import 'package:flutter_scroll_app/src/domain/repositories/museum_repository.dart';
@@ -22,8 +23,8 @@ class MuseumRepositoryImpl extends RepositoryBase implements MuseumRepository {
   final MuseumObjectDetailsMapper museumObjectDetailsMapper;
 
   @override
-  Future<List<MuseumObject>> getObjects(int page) {
-    return executeApiCall<List<MuseumObject>, Object>(
+  Future<MuseumCollection> getObjects(int page) {
+    return executeApiCall<MuseumCollection, Object>(
       invoker: () => museumApiService.fetchCollectionData(page),
       mapper: (body) => museumItemsMapper.map(
         CollectionApiModel.fromJson(body as Map<String, dynamic>),

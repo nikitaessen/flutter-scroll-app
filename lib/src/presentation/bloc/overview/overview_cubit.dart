@@ -16,25 +16,34 @@ class OverviewCubit extends Cubit<OverviewState> {
 
   Future<void> getCollectionObjects() async {
     try {
+      if (state.hasReachedLimit) {
+        return;
+      }
+      
       if (state.status == OverviewStatus.initial) {
-        final fetchedItems = await _museumUseCase.execute();
+        final museumCollection = await _museumUseCase.execute();
+        final museumItems = museumCollection.items;
         return emit(
           OverviewState(
             status: OverviewStatus.loaded,
-            museumItems: fetchedItems,
+            museumItems: museumCollection.items,
+            hasReachedLimit: museumItems.length >= museumCollection.count,
           ),
         );
       }
 
       final nextPage = state.pageNumber + 1;
-      final fetchedItems = await _museumUseCase.execute(
+      final museumCollection = await _museumUseCase.execute(
         pageNumber: nextPage,
       );
+      final museumItems = List<MuseumObject>.from(state.museumItems)
+        ..addAll(museumCollection.items);
       emit(
         state.copyWith(
           status: OverviewStatus.loaded,
-          museumItems: List.from(state.museumItems)..addAll(fetchedItems),
+          museumItems: museumItems,
           pageNumber: nextPage,
+          hasReachedLimit: museumItems.length >= museumCollection.count,
         ),
       );
     } on RepositoryException {

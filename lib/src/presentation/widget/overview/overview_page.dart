@@ -41,6 +41,7 @@ class _OverviewPageState extends State<OverviewPage>
           case OverviewStatus.initial:
           case OverviewStatus.loaded:
             return _OverviewPageContent(
+              hasReachedLimit: state.hasReachedLimit,
               items: state.museumItems,
               scrollController: _scrollController,
             );
@@ -54,10 +55,12 @@ class _OverviewPageState extends State<OverviewPage>
 
 class _OverviewPageContent extends StatelessWidget {
   const _OverviewPageContent({
+    required this.hasReachedLimit,
     required this.items,
     required this.scrollController,
   });
 
+  final bool hasReachedLimit;
   final List<MuseumObject> items;
   final ScrollController scrollController;
 
@@ -78,7 +81,7 @@ class _OverviewPageContent extends StatelessWidget {
               controller: scrollController,
               padding: const EdgeInsets.symmetric(vertical: 40),
               itemBuilder: (context, index) {
-                if (index == items.length) {
+                if (index == items.length && !hasReachedLimit) {
                   return const _ProgressIndicatorItem();
                 }
 
@@ -92,7 +95,7 @@ class _OverviewPageContent extends StatelessWidget {
                   ),
                 );
               },
-              itemCount: items.length + 1,
+              itemCount: hasReachedLimit ? items.length : items.length + 1,
             ),
     );
   }
