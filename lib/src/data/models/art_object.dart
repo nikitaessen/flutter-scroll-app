@@ -15,8 +15,8 @@ class ArtObject {
     this.headerImage,
   );
 
-  String id;
-  String objectNumber;
+  String? id;
+  String? objectNumber;
   String? title;
   String? description;
   String? longTitle;

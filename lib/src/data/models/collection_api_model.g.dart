@@ -8,9 +8,9 @@ part of 'collection_api_model.dart';
 
 CollectionApiModel _$CollectionApiModelFromJson(Map<String, dynamic> json) =>
     CollectionApiModel(
-      (json['count'] as num).toInt(),
-      (json['artObjects'] as List<dynamic>)
-          .map((e) => ArtObject.fromJson(e as Map<String, dynamic>))
+      (json['count'] as num?)?.toInt(),
+      (json['artObjects'] as List<dynamic>?)
+          ?.map((e) => ArtObject.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

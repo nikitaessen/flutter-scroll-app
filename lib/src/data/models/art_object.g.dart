@@ -7,8 +7,8 @@ part of 'art_object.dart';
 // **************************************************************************
 
 ArtObject _$ArtObjectFromJson(Map<String, dynamic> json) => ArtObject(
-      json['id'] as String,
-      json['objectNumber'] as String,
+      json['id'] as String?,
+      json['objectNumber'] as String?,
       json['title'] as String?,
       json['description'] as String?,
       json['longTitle'] as String?,

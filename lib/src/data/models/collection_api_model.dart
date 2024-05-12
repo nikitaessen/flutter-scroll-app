@@ -10,10 +10,10 @@ class CollectionApiModel {
     this.artObjects,
   );
 
-  int count;
-  List<ArtObject> artObjects;
+  int? count;
+  List<ArtObject>? artObjects;
 
-    factory CollectionApiModel.fromJson(Map<String, dynamic> json) =>
+  factory CollectionApiModel.fromJson(Map<String, dynamic> json) =>
       _$CollectionApiModelFromJson(json);
   Map<String, dynamic> toJson() => _$CollectionApiModelToJson(this);
 }
