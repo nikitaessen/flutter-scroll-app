@@ -8,7 +8,9 @@
       "program": "lib/src/presentation/main.dart",
       "args": [
         "--target",
-        "lib/src/presentation/main.dart"
+        "lib/src/presentation/main.dart",
+        "--dart-define",
+        "MUSEUM_KEY=A0ov6hhx"
       ]
     }
   ]

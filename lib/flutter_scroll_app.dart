@@ -1,1 +1,1 @@
-export 'src/assets/index.dart';
+export 'assets/index.dart';

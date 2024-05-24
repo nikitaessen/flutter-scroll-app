@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
-import 'package:flutter_scroll_app/src/assets/assets.gen.dart';
-import 'package:flutter_scroll_app/src/assets/fonts.gen.dart';
+import 'package:flutter_scroll_app/assets/assets.gen.dart';
+import 'package:flutter_scroll_app/assets/fonts.gen.dart';
 
 Future<void> testExecutable(FutureOr<void> Function() testMain) async {
   await loadFonts();
