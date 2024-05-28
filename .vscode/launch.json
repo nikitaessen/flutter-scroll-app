@@ -5,10 +5,10 @@
       "name": "Launch development",
       "request": "launch",
       "type": "dart",
-      "program": "lib/src/presentation/main.dart",
+      "program": "lib/main.dart",
       "args": [
         "--target",
-        "lib/src/presentation/main.dart",
+        "lib/main.dart",
         "--dart-define",
         "MUSEUM_KEY=A0ov6hhx"
       ]
