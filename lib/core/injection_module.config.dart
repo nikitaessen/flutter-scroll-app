@@ -8,11 +8,12 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter_scroll_app/core/data/sources/museum_api_service.dart' as _i6;
-import 'package:flutter_scroll_app/core/data/sources/museum_api_service_impl.dart'
-    as _i7;
 import 'package:flutter_scroll_app/core/data/repositories/museum_repository.dart'
     as _i8;
+import 'package:flutter_scroll_app/core/data/sources/museum_api_service.dart'
+    as _i6;
+import 'package:flutter_scroll_app/core/data/sources/museum_api_service_impl.dart'
+    as _i7;
 import 'package:flutter_scroll_app/core/domain/repositories/museum_repository_impl.dart'
     as _i9;
 import 'package:flutter_scroll_app/core/scroll_app_router.dart' as _i3;

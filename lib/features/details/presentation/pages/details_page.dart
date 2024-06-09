@@ -8,7 +8,10 @@ import 'package:flutter_scroll_app/core/presentation/widgets/error_widget.dart';
 
 @RoutePage()
 class DetailsPage extends StatefulWidget {
-  const DetailsPage({required this.objectNumber, super.key});
+  const DetailsPage({
+    @PathParam('id') required this.objectNumber,
+    super.key,
+  });
 
   final String objectNumber;
 

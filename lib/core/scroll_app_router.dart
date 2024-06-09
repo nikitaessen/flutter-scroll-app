@@ -11,7 +11,14 @@ part 'scroll_app_router.gr.dart';
 class ScrollAppRouter extends _$ScrollAppRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: OverviewRoute.page, initial: true),
-        AutoRoute(page: DetailsRoute.page),
+        AutoRoute(
+          page: OverviewRoute.page,
+          path: '/',
+          initial: true,
+        ),
+        AutoRoute(
+          page: DetailsRoute.page,
+          path: '/details/:id',
+        ),
       ];
 }

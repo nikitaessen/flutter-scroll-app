@@ -16,7 +16,10 @@ abstract class _$ScrollAppRouter extends RootStackRouter {
   @override
   final Map<String, PageFactory> pagesMap = {
     DetailsRoute.name: (routeData) {
-      final args = routeData.argsAs<DetailsRouteArgs>();
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<DetailsRouteArgs>(
+          orElse: () =>
+              DetailsRouteArgs(objectNumber: pathParams.getString('id')));
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: DetailsPage(
@@ -47,6 +50,7 @@ class DetailsRoute extends PageRouteInfo<DetailsRouteArgs> {
             objectNumber: objectNumber,
             key: key,
           ),
+          rawPathParams: {'id': objectNumber},
           initialChildren: children,
         );
 
