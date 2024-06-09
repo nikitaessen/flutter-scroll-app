@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_scroll_app/core/util/exceptions/repository_exception.dart';
@@ -50,7 +52,7 @@ class OverviewCubit extends Cubit<OverviewState> {
       emit(const OverviewState(status: OverviewStatus.error));
     } catch (ex) {
       emit(const OverviewState(status: OverviewStatus.error));
-      // TODO(Nikita): log error
+      log('OverviewCubit exception: $ex');
     }
   }
 }

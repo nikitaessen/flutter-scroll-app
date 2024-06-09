@@ -7,8 +7,6 @@
       "type": "dart",
       "program": "lib/main.dart",
       "args": [
-        "--target",
-        "lib/main.dart",
         "--dart-define",
         "MUSEUM_KEY=A0ov6hhx"
       ]

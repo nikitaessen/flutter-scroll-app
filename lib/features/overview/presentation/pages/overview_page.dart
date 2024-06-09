@@ -26,6 +26,12 @@ class _OverviewPageState extends State<OverviewPage>
     super.initState();
   }
 
+  @override
+  void dispose() {
+    _scrollController.removeListener(_scrollListener);
+    super.dispose();
+  }
+
   void _scrollListener() {
     if (_scrollController.position.pixels ==
         _scrollController.position.maxScrollExtent) {
@@ -106,17 +112,11 @@ class _ProgressIndicatorItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        SizedBox(height: 12),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CircularProgressIndicator(),
-          ],
-        ),
-        SizedBox(height: 16),
-      ],
+    return const Center(
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 12),
+        child: CircularProgressIndicator(),
+      ),
     );
   }
 }

@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_scroll_app/core/presentation/widgets/image_with_progress.dart';
 import 'package:flutter_scroll_app/features/details/presentation/bloc/details_cubit.dart';
 import 'package:flutter_scroll_app/features/details/presentation/bloc/details_status.dart';
 import 'package:flutter_scroll_app/core/presentation/widgets/error_widget.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 @RoutePage()
 class DetailsPage extends StatefulWidget {
@@ -46,53 +46,56 @@ class _DetailsPageState extends State<DetailsPage> {
                 child: CircularProgressIndicator(),
               );
             case DetailsStatus.loaded:
-              return SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        const CircularProgressIndicator(),
-                        FadeInImage.memoryNetwork(
-                          height: 400,
-                          placeholder: kTransparentImage,
-                          image: state.imageUrl,
-                          fit: BoxFit.contain, // Adjust the fit property here
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            state.title,
-                            style: const TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            state.description,
-                            style: const TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+              return LoadedDetailsContent(
+                title: state.title,
+                description: state.description,
+                imageUrl: state.imageUrl,
               );
             case DetailsStatus.error:
               return const ErrorPageContent();
           }
         },
       ),
+    );
+  }
+}
+
+class LoadedDetailsContent extends StatelessWidget {
+  const LoadedDetailsContent({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.imageUrl,
+  });
+
+  final String imageUrl;
+  final String title;
+  final String description;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        ImageWithProgress(
+          imageUrl: imageUrl,
+          height: 400,
+        ),
+        const SizedBox(height: 16),
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 10),
+        Text(
+          description,
+          style: const TextStyle(
+            fontSize: 16,
+          ),
+        ),
+      ],
     );
   }
 }

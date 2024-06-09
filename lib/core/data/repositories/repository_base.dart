@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -44,7 +45,7 @@ abstract class RepositoryBase {
                 '\nBody: ${response.data.toString()}');
       }
     } catch (ex) {
-      // TODO(Nikita): log error
+      log('Repository exception: $ex');
 
       if (retryAttemptNumber <= _maxAttemptsCount) {
         await executeApiCall<T, TSource>(

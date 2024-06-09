@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_scroll_app/features/details/domain/use_cases/museum_object_details_use_case.dart';
 import 'package:flutter_scroll_app/features/details/presentation/bloc/details_status.dart';
@@ -27,7 +29,7 @@ class DetailsCubit extends Cubit<DetailsState> {
       );
     } catch (ex) {
       emit(const DetailsState(status: DetailsStatus.error));
-      // TODO(Nikita): log error
+      log('DetailsCubit exception: $ex');
     }
   }
 }

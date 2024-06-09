@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_scroll_app/core/presentation/widgets/image_with_progress.dart';
 import 'package:flutter_scroll_app/core/util/constants/app_constants.dart';
 import 'package:flutter_scroll_app/core/scroll_app_router.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 class ListItem extends StatelessWidget {
   const ListItem({
@@ -69,24 +69,15 @@ class ListItem extends StatelessWidget {
                 children: [
                   Flexible(
                     flex: 3,
-                    child: Stack(
-                      children: [
-                        const Center(
-                          child: CircularProgressIndicator(),
+                    child: Positioned.fill(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(borderRadius)),
+                        child: ImageWithProgress(
+                          imageUrl: headerImageUrl,
+                          width: MediaQuery.of(context).size.width,
                         ),
-                        Positioned.fill(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(borderRadius)),
-                            child: FadeInImage.memoryNetwork(
-                              placeholder: kTransparentImage,
-                              image: headerImageUrl,
-                              width: MediaQuery.of(context).size.width,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                   Flexible(
